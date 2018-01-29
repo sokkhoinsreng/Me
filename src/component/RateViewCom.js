@@ -59,6 +59,7 @@ class RateView extends Component {
     }
 
     render() {
+        const { toggle1, toggle2, toggle3, toggle4, toggle5 } = this.state;
 
         const rank1Color = toggle1 ? "rgb(188,35,55)" : 'transparent';
         const rank2Color = toggle2 ? "rgb(238,89,60)" : 'transparent';
