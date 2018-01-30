@@ -38,13 +38,7 @@ class FeedbackScreen extends Component {
     saveData5 = (data) => {
         this.setState({ rank5: data });
     }
-    // countClientSave = () => {
-    //     if (this.state.type == 'CLIENT') {
-    //         this.props.navigation.navigate('Menu',this.state)
-    //     }else if (this.state.type=='EMPLOYEE') {
-    //         this.props.navigation.navigate('Menu',this.state)
-    //     }
-    // }
+    
     saveSummitDate = (full) => {
         if (this.state.rank1 == null ||
             this.state.rank2 == null ||
