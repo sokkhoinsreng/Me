@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
     View, Text, StyleSheet, TouchableOpacity,
     ScrollView, Button, AsyncStorage, processColor,
-    FlatList
+    FlatList, Alert
 } from 'react-native';
 
 
@@ -17,9 +17,9 @@ class DataEmployee extends Component {
             list: '',
         }
         try {
-            AsyncStorage.getItem('database_form1').then((value1) => {
+            AsyncStorage.getItem('database_form1').then((value) => {
                 this.setState({
-                    list: JSON.parse(value1),
+                    list: JSON.parse(value),
                 })
             })
         } catch (err) {
@@ -31,7 +31,7 @@ class DataEmployee extends Component {
             return this.state.list.map((data, i) => {
                 return (
                     <View
-                        style={[styles.list, { marginTop: 20 }]}
+                        style={styles.list}
                         key={i}
                     >
                         <Text style={{ fontSize: 14 }}>Quality: {data.rankSave1}</Text>
@@ -53,7 +53,19 @@ class DataEmployee extends Component {
         this.setState({ list: value });
         AsyncStorage.clear();
     }
+    alertClear = () => {
+        Alert.alert(
+            'Clear Data !!!',
+            'Are you sure for clear data ?',
+            [
+                { text: 'OK', onPress: () => { this.clearData()} },
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' }
+            ],
+            { cancelable: false }
+        )
 
+    }
+   
     render() {
         const data = JSON.stringify(this.state.list)
         return (
@@ -62,8 +74,7 @@ class DataEmployee extends Component {
                     <Text style={styles.textHeader}>EMPLOYEE</Text>
                     <Text>{this.state.list ? this.state.list.length : '0'}</Text>
                     <TouchableOpacity
-                        onPress={() => this.clearData(null)}
-
+                        onPress={() => this.alertClear()}
                         style={styles.clear} >
                         <Text style={{ color: '#29b6f6' }}>Clear</Text>
                     </TouchableOpacity>
@@ -100,7 +111,9 @@ const styles = StyleSheet.create({
         paddingRight: 15,
     },
     list: {
-        width: 200,
+        flex: 1,
+        marginTop: 20,
+        borderBottomWidth: 2
     },
     count: {
         marginTop: 5,
