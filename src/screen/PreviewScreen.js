@@ -10,11 +10,7 @@ class PreViewScreen extends Component {
             myProp: this.props.navigation.state.params,
             myPropMe: this.props.navigation.state.params.type,
 
-            // rankSave1: this.props.navigation.state.params.rank1,
-            // rankSave2: this.props.navigation.state.params.rank2,
-            // rankSave3: this.props.navigation.state.params.rank3,
-            // rankSave4: this.props.navigation.state.params.rank4,
-            // rankSave5: this.props.navigation.state.params.rank5,
+            
         }
     }
     
@@ -24,9 +20,7 @@ class PreViewScreen extends Component {
     render() {
         return (
             <View style={styles.container} >
-                {/* <View style={{position:'absolute',flex:1, alignItems:'center', justifyContent:'center'}}>
-                    <Text style={{fontSize:24, color:'black'}}>OR</Text>
-                </View> */}
+             
                 < TouchableOpacity
                     onPress={() => this.onPreview()}
                     style={styles.client} >
